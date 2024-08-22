@@ -1,15 +1,15 @@
 const express = require('express');
 const Replicate = require('replicate');
 require('dotenv').config();
-
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
+app.use(cors());
 const replicate = new Replicate({
-  auth: process.env.PORT,
+  auth: REPLICATE_API_TOKEN
 });
 
 //animation2k-flux - done
@@ -149,7 +149,7 @@ app.post("/flux_softserve_anime",async(req,res)=>{
         lora_scale: 1,
         num_outputs: 1,
         aspect_ratio: "1:1",
-        output_format: "webp",
+        output_format: "png",
         guidance_scale: 3.5,
         output_quality: 80,
         num_inference_steps: 28
@@ -172,7 +172,7 @@ app.post("/flux_watercolor",async(req,res)=>{
         lora_scale: 1,
         num_outputs: 1,
         aspect_ratio: "1:1",
-        output_format: "webp",
+        output_format: "png",
         guidance_scale: 3.5,
         output_quality: 80,
         num_inference_steps: 28
@@ -195,7 +195,7 @@ app.post("/flux_ghibsky_illustration",async(req,res)=>{
         lora_scale: 1,
         num_outputs: 1,
         aspect_ratio: "9:16",
-        output_format: "jpg",
+        output_format: "png",
         guidance_scale: 3.5,
         output_quality: 100,
         num_inference_steps: 28
@@ -218,7 +218,7 @@ app.post("/flux_dev_realism",async(req,res)=>{
         num_outputs: 1,
         aspect_ratio: "4:5",
         lora_strength: 0.8,
-        output_format: "webp",
+        output_format: "png",
         output_quality: 100,
         num_inference_steps: 30
       }
@@ -240,7 +240,7 @@ app.post("/flux_dev_realism",async(req,res)=>{
         num_outputs: 1,
         aspect_ratio: "4:5",
         lora_strength: 0.8,
-        output_format: "webp",
+        output_format: "png",
         output_quality: 100,
         num_inference_steps: 30
       }
