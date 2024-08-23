@@ -9,10 +9,10 @@ const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors());
 const replicate = new Replicate({
-  auth: REPLICATE_API_TOKEN
+  auth: process.env.REPLICATE_API_TOKEN
 });
 
-//animation2k-flux - done
+//animation2k-flux - not
 app.post('/animation2k', async (req, res) => {
   try {
     const { prompt } = req.body;
@@ -44,7 +44,7 @@ app.post('/animation2k', async (req, res) => {
   }
 });
 
-//art-lora - done
+//art-lora - done done
 app.post("/art_lora",async(req,res)=>{
     const {prompt} = req.body;
         const output = await replicate.run(
@@ -66,7 +66,7 @@ app.post("/art_lora",async(req,res)=>{
           res.json({ output });
 })
 
-//diseny - done
+//diseny - done done
 app.post("/diseny",async(req,res)=>{
     const {prompt} = req.body;
         const output = await replicate.run(
@@ -87,18 +87,18 @@ app.post("/diseny",async(req,res)=>{
           res.json({ output });
 })
 
-//frosting_lane_flux - done
+//frosting_lane_flux - done done
 app.post("/frosting_lane_flux",async(req,res)=>{
     const {prompt} = req.body;
     const output = await replicate.run(
       "lucataco/flux-dev-multi-lora:a738942df15c8c788b076ddd052256ba7923aade687b12109ccc64b2c3483aa1",
       {
         input: {
-          prompt: `${prompt} , frstingln illustration`,
+          prompt: `${prompt}`,
           hf_loras: ["https://huggingface.co/alvdansen/frosting_lane_flux/resolve/main/flux_dev_frostinglane_araminta_k.safetensors"],
           num_outputs: 1,
           aspect_ratio: "1:1",
-          output_format: "png",
+          output_format: "jpeg",
           guidance_scale: 3.5,
           output_quality: 80,
           num_inference_steps: 28
@@ -109,7 +109,7 @@ app.post("/frosting_lane_flux",async(req,res)=>{
           res.json({ output });
 })
 
-// the-point-flux - done
+// the-point-flux - not working
 app.post("/the_point_flux", async (req, res) => {
   const { prompt } = req.body;
 
@@ -137,7 +137,7 @@ app.post("/the_point_flux", async (req, res) => {
     
 });
 
-//flux-softserve-anime - done
+//flux-softserve-anime - done done
 app.post("/flux_softserve_anime",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
@@ -145,11 +145,11 @@ app.post("/flux_softserve_anime",async(req,res)=>{
     {
       input: {
         model: "dev",
-        prompt: `${prompt}, sftsrv style`,
+        prompt: `${prompt}`,
         lora_scale: 1,
         num_outputs: 1,
         aspect_ratio: "1:1",
-        output_format: "png",
+        output_format: "webp",
         guidance_scale: 3.5,
         output_quality: 80,
         num_inference_steps: 28
@@ -160,7 +160,7 @@ app.post("/flux_softserve_anime",async(req,res)=>{
     res.json({output})
 })
 
-// flux-watercolor - done
+// flux-watercolor - done done
 app.post("/flux_watercolor",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
@@ -183,7 +183,7 @@ app.post("/flux_watercolor",async(req,res)=>{
     res.json({output})
 })
 
-//flux-ghibsky-illustration - done
+//flux-ghibsky-illustration - done done
 app.post("/flux_ghibsky_illustration",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
@@ -206,7 +206,7 @@ app.post("/flux_ghibsky_illustration",async(req,res)=>{
     res.json({output})
 })
 
-//flux-dev-realism - done
+//flux-dev-realism - done done
 app.post("/flux_dev_realism",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
@@ -228,7 +228,7 @@ app.post("/flux_dev_realism",async(req,res)=>{
     res.json({output})
 })
 
-//flux-dev-multi-lora  - done
+//flux-dev-multi-lora  - done done
 app.post("/flux_dev_realism",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
@@ -250,14 +250,14 @@ app.post("/flux_dev_realism",async(req,res)=>{
     res.json({output})
 })
 
-//flux-dev-multi-lora - done
+//flux-dev-multi-lora - done  or // alvdansen/softserve_anime  -- done no need to check
 app.post("/flux_dev_multi_lora",async(req,res)=>{
   const {prompt} = req.body;
   const output = await replicate.run(
     "lucataco/flux-dev-multi-lora:a738942df15c8c788b076ddd052256ba7923aade687b12109ccc64b2c3483aa1",
     {
       input: {
-        prompt: `a photo of TOK, sftsrv style, ${prompt}`,
+        prompt: `${prompt}`,
         hf_loras: ["https://replicate.delivery/yhqm/xIUPCppeslXbaC6D8hzONTPKFURik2zRMLmmif0GRq2f55lmA/trained_model.tar","alvdansen/softserve_anime"],
         num_outputs: 1,
         aspect_ratio: "1:1",
