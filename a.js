@@ -48,21 +48,21 @@ app.post('/animation2k', async (req, res) => {
 app.post("/art_lora",async(req,res)=>{
     const {prompt} = req.body;
         const output = await replicate.run(
-            "lucataco/flux-dev-multi-lora:a738942df15c8c788b076ddd052256ba7923aade687b12109ccc64b2c3483aa1",
-            {
-              input: {
-                prompt: `${prompt}, art style`,
-                hf_loras: ["https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/art_lora.safetensors"],      
-                num_outputs: 1,
-                aspect_ratio: "1:1",
-                output_format: "png",
-                guidance_scale: 3.5,
-                output_quality: 80,
-                num_inference_steps: 28
-              }
-            }
-          );
-          console.log(output);
+  "lucataco/flux-dev-multi-lora:a738942df15c8c788b076ddd052256ba7923aade687b12109ccc64b2c3483aa1",
+  {
+    input: {
+      prompt: `${prompt}, art style`,
+      hf_loras: ["https://huggingface.co/dennis-sleepytales/art_lora/XLabs-AI/flux-lora-collection/resolve/main/art_lora.safetensors"],
+      num_outputs: 1,
+      aspect_ratio: "1:1",
+      output_format: "png",
+      guidance_scale: 3.5,
+      output_quality: 80,
+      num_inference_steps: 28
+    }
+  }
+);
+console.log(output);
           res.json({ output });
 })
 
