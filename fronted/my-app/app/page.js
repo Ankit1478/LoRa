@@ -10,16 +10,14 @@ export default function Home() {
   const [error, setError] = useState('');
 
   const models = [
-    { value: 'animation2k', label: 'Animation 2K' },
+    { value: 'flux_mystic_animals', label: 'Flux Mystic Animals' },
     { value: 'art_lora', label: 'Art LoRA' },
     { value: 'diseny', label: 'Disney Style' },
     { value: 'frosting_lane_flux', label: 'Frosting Lane Flux' },
-    { value: 'the_point_flux', label: 'The Point Flux' },
-    { value: 'flux_softserve_anime', label: 'Flux Softserve Anime' },
     { value: 'flux_watercolor', label: 'Flux Watercolor' },
     { value: 'flux_ghibsky_illustration', label: 'Flux Ghibsky Illustration' },
     { value: 'flux_dev_realism', label: 'Flux Dev Realism' },
-    { value: 'flux_dev_multi_lora', label: 'Flux Dev Multi LoRA' },
+    { value: 'flux_softserve_anime', label: 'Flux Softserve Anime' },
   ];
 
   const handleGenerate = async () => {
